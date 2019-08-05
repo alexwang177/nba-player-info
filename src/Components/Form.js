@@ -4,7 +4,10 @@ class Form extends React.Component{
   
   render(){
     return (
-      <p>Form</p>
+      <form>
+          <input type='text' name='playerName' placeholder="Enter a player's name..."></input>
+          <button>Search</button>
+      </form>
     );
   }
 }
