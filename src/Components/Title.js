@@ -4,7 +4,10 @@ class Title extends React.Component{
   
   render(){
     return (
-      <p>Title</p>
+      <div>
+        <h1>NBA Player Information</h1>
+        <p>Search for your favorite players</p>
+      </div>
     );
   }
 }
