@@ -6,6 +6,10 @@ import Team from './Components/Team.js';
 import Form from './Components/Form.js';
 
 class App extends React.Component{
+
+  getWeather(){
+    
+  }
   
   render(){
     return (
