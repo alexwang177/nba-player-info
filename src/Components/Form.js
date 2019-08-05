@@ -4,7 +4,7 @@ class Form extends React.Component{
   
   render(){
     return (
-      <form>
+      <form onSubmit={this.props.getPlayer}>
           <input type='text' name='playerName' placeholder="Enter a player's name..."></input>
           <button>Search</button>
       </form>

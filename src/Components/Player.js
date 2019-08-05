@@ -4,7 +4,11 @@ class Player extends React.Component{
   
   render(){
     return (
-      <p>Player</p>
+      <div>
+        <h2>{this.props.firstName}</h2>
+        <h2>{this.props.lastName}</h2>
+        <h3>Position: {this.props.position}</h3>
+      </div>
     );
   }
 }
