@@ -64,19 +64,19 @@ class App extends React.Component{
         <hr/>
         <div className="row">
           <div className="col-6">          
-            <Player 
+            {this.state.showInfo && (<Player 
               firstName={this.state.firstName}
               lastName={this.state.lastName}
               position={this.state.position}
               error={this.state.error}
-            />
+            />)}
           </div>   
           <div className="col-6">          
-            <Team 
+            {this.state.showInfo && (<Team 
               team={this.state.team}
               conference={this.state.conference}
               error={this.state.error}
-            />
+            />)}
           </div>     
         </div>
       </div>
