@@ -54,30 +54,34 @@ class App extends React.Component{
     //Display the info cards
 
   }
-  
+  // https://66.media.tumblr.com/tumblr_mbfg0krUZq1qdxo4co1_500.jpg
   render(){
     return (
       <div className="App container">
-        <div id='background-image'></div>
-        <Title />
-        <Form getPlayer = {this.getPlayer}/>
-        <hr/>
         <div className="row">
-          <div className="col-6">          
-            {this.state.showInfo && (<Player 
-              firstName={this.state.firstName}
-              lastName={this.state.lastName}
-              position={this.state.position}
-              error={this.state.error}
-            />)}
-          </div>   
-          <div className="col-6">          
-            {this.state.showInfo && (<Team 
-              team={this.state.team}
-              conference={this.state.conference}
-              error={this.state.error}
-            />)}
-          </div>     
+          <div className='col-4'><img src="https://66.media.tumblr.com/tumblr_mbfg0krUZq1qdxo4co1_500.jpg" className="rounded m-3" id="jordan"></img></div>        
+          <div className='col-8'>
+            <Title />
+            <Form getPlayer = {this.getPlayer}/>
+            <hr/>
+            <div className="row">
+              <div className="col-6">          
+                {this.state.showInfo && (<Player 
+                  firstName={this.state.firstName}
+                  lastName={this.state.lastName}
+                  position={this.state.position}
+                  error={this.state.error}
+                />)}
+              </div>   
+              <div className="col-6">          
+                {this.state.showInfo && (<Team 
+                  team={this.state.team}
+                  conference={this.state.conference}
+                  error={this.state.error}
+                />)}
+              </div>     
+            </div>
+          </div>
         </div>
       </div>
     );
