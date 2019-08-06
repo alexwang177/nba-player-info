@@ -4,6 +4,7 @@ import Title from './Components/Title.js';
 import Player from './Components/Player.js';
 import Team from './Components/Team.js';
 import Form from './Components/Form.js';
+import Dropdown from './Components/Dropdown.js'
 
 const API_KEY = '1c1db10603msh7e97996b2669453p17f294jsna5763e88a5c5';
 
@@ -16,7 +17,8 @@ class App extends React.Component{
       position: undefined,
       team: undefined,
       conference: undefined,
-      error: undefined
+      error: undefined,
+      showInfo: false
     }
     this.getPlayer = this.getPlayer.bind(this);
   }
@@ -41,30 +43,42 @@ class App extends React.Component{
         position: data.data[0].position,
         team: data.data[0].team.full_name,
         conference: data.data[0].team.conference,
-        error: ''
+        error: '',
+        showInfo: true
       })
     })
     .catch(err => {
       console.log(err)
     })
+
+    //Display the info cards
+
   }
   
   render(){
     return (
-      <div className="App">
+      <div className="App container">
+        <div id='background-image'></div>
         <Title />
         <Form getPlayer = {this.getPlayer}/>
-        <Player 
-          firstName={this.state.firstName}
-          lastName={this.state.lastName}
-          position={this.state.position}
-          error={this.state.error}
-        />
-        <Team 
-          team={this.state.team}
-          conference={this.state.conference}
-          error={this.state.error}
-        />
+        <hr/>
+        <div className="row">
+          <div className="col-6">          
+            <Player 
+              firstName={this.state.firstName}
+              lastName={this.state.lastName}
+              position={this.state.position}
+              error={this.state.error}
+            />
+          </div>   
+          <div className="col-6">          
+            <Team 
+              team={this.state.team}
+              conference={this.state.conference}
+              error={this.state.error}
+            />
+          </div>     
+        </div>
       </div>
     );
   }
