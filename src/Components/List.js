@@ -10,7 +10,7 @@ export default class List extends Component {
         var playerList = this.props.playerList;
         return (
             <ul className='list-group'>
-                {playerList.map((player) => (<li onClick={() => this.displayItem(player)} className='list-group-item' style={listItemStyle}>{player.first_name} {player.last_name}</li>))}
+                {playerList.map((player) => (<li key={player.id} onClick={() => this.displayItem(player)} className='list-group-item' style={listItemStyle}>{player.first_name} {player.last_name}</li>))}
             </ul>
         )
     }

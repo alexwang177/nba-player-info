@@ -3,11 +3,20 @@ import React from 'react';
 class Team extends React.Component{
   
   render(){
-    //let cardStyle = {display:'none'};
+    const cardStyle = {
+      width:'22em',
+      height: '15em',
+      marginTop: '22%'
+    };
+
+    const textStyle = {
+      marginTop: '12%'
+    };
+
     return (
-      <div className='card bg-dark'>
-        <p className='text-light card-body'>{this.props.team}</p>
-        <p className='text-light card-footer'>{this.props.conference}</p>
+      <div className='card bg-dark' style={cardStyle}>
+        <p className='text-light' style={textStyle}>{this.props.team}</p>
+        <p className='text-light' style={textStyle}>{this.props.conference}</p>
       </div>
     );
   }
