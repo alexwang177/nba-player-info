@@ -6,8 +6,8 @@ class Team extends React.Component{
     //let cardStyle = {display:'none'};
     return (
       <div className='card bg-dark'>
-        <h2 className='text-light display-2 card-body'>{this.props.team}</h2>
-        <h2 className='text-light display-2 card-footer'>{this.props.conference}</h2>
+        <p className='text-light card-body'>{this.props.team}</p>
+        <p className='text-light card-footer'>{this.props.conference}</p>
       </div>
     );
   }

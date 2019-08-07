@@ -6,9 +6,9 @@ class Player extends React.Component{
     //let cardStyle = {display:'none'};
     return (
       <div className='card bg-dark'>
-        <h2 className='text-light display-2'>{this.props.firstName}</h2>
-        <h2 className='text-light display-2'>{this.props.lastName}</h2>
-        <h3 className='text-light display-2 card-footer'>{this.props.position}</h3>
+        <p className='text-light'>{this.props.firstName}</p>
+        <p className='text-light'>{this.props.lastName}</p>
+        <p className='text-light card-footer'>{this.props.position}</p>
       </div>
     );
   }
