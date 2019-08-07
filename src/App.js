@@ -90,13 +90,13 @@ class App extends React.Component{
     return (
       <div className="App container">
         <div className="row">
-          <div className='col-4'><img src="https://66.media.tumblr.com/tumblr_mbfg0krUZq1qdxo4co1_500.jpg" className="rounded border border-dark m-3" id="jordan"></img></div>        
+          <div className='col-4'><img src="https://66.media.tumblr.com/tumblr_mbfg0krUZq1qdxo4co1_500.jpg" className="rounded border border-dark m-3" id="jordan" alt="MJ"></img></div>        
           <div className='col-8'>
             <Title />
             <Form getPlayer = {this.getPlayer}/>
             <hr/>
             <div className="row">
-              <div className="col-6">          
+              <div className="col-6">       
                 {this.state.showInfo && (<Player 
                   firstName={this.state.firstName}
                   lastName={this.state.lastName}
