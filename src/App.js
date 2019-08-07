@@ -37,15 +37,18 @@ class App extends React.Component{
     .then(res => res.json())
     .then(data => {
       console.log(data);
-      this.setState({
-        firstName: data.data[0].first_name,
-        lastName: data.data[0].last_name,
-        position: data.data[0].position,
-        team: data.data[0].team.full_name,
-        conference: data.data[0].team.conference,
-        error: '',
-        showInfo: true
-      })
+      if(data.data.length===1)
+      {
+        this.setState({
+          firstName: data.data[0].first_name,
+          lastName: data.data[0].last_name,
+          position: data.data[0].position,
+          team: data.data[0].team.full_name,
+          conference: data.data[0].team.conference,
+          error: '',
+          showInfo: true
+        })
+      }
     })
     .catch(err => {
       console.log(err)
