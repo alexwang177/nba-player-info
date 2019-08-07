@@ -25,6 +25,21 @@ class App extends React.Component{
     this.getPlayer = this.getPlayer.bind(this);
   }
 
+  displayPlayer = (player) => {
+    console.log(player);
+    this.setState({
+      playerList: [],
+      firstName: player.first_name,
+      lastName: player.last_name,
+      position: player.position,
+      team: player.team.full_name,
+      conference: player.team.conference,
+      error: '',
+      showInfo: true,
+      showList: false
+    })
+  }
+
   getPlayer(e){
     e.preventDefault();
     const searchName = e.target.elements.playerName.value;
@@ -69,9 +84,6 @@ class App extends React.Component{
     .catch(err => {
       console.log(err)
     })
-
-    //Display the info cards
-
   }
   // https://66.media.tumblr.com/tumblr_mbfg0krUZq1qdxo4co1_500.jpg
   render(){
@@ -99,7 +111,7 @@ class App extends React.Component{
                   error={this.state.error}
                 />)}
               </div>  
-              {this.state.showList && (<List playerList={this.state.playerList}/>)}   
+              {this.state.showList && (<List playerList={this.state.playerList} displayPlayer={this.displayPlayer}/>)}   
             </div>
           </div>
         </div>

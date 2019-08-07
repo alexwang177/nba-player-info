@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 
 export default class List extends Component {
+    displayItem = (player) => {
+        this.props.displayPlayer(player);
+    }
+
     render() {
+        const listItemStyle = {cursor:'pointer'};
         var playerList = this.props.playerList;
         return (
             <ul className='list-group'>
-                <li className='list-group-item'>More than one player found</li>
-                {playerList.map((player) => (<li className='list-group-item'>{player.first_name} {player.last_name}</li>))}
+                {playerList.map((player) => (<li onClick={() => this.displayItem(player)} className='list-group-item' style={listItemStyle}>{player.first_name} {player.last_name}</li>))}
             </ul>
         )
     }
