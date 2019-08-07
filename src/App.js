@@ -4,7 +4,7 @@ import Title from './Components/Title.js';
 import Player from './Components/Player.js';
 import Team from './Components/Team.js';
 import Form from './Components/Form.js';
-import Dropdown from './Components/Dropdown.js'
+import List from './Components/List.js';
 
 const API_KEY = '1c1db10603msh7e97996b2669453p17f294jsna5763e88a5c5';
 
@@ -12,13 +12,15 @@ class App extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
+      playerList: undefined,
       firstName: undefined,
       lastName: undefined,
       position: undefined,
       team: undefined,
       conference: undefined,
       error: undefined,
-      showInfo: false
+      showInfo: false,
+      showList: false
     }
     this.getPlayer = this.getPlayer.bind(this);
   }
@@ -37,16 +39,30 @@ class App extends React.Component{
     .then(res => res.json())
     .then(data => {
       console.log(data);
-      if(data.data.length===1)
-      {
+      if(data.data.length===1){
         this.setState({
+          playerList: data.data,
           firstName: data.data[0].first_name,
           lastName: data.data[0].last_name,
           position: data.data[0].position,
           team: data.data[0].team.full_name,
           conference: data.data[0].team.conference,
           error: '',
-          showInfo: true
+          showInfo: true,
+          showList: false
+        })
+      }
+      else if(data.data.length>=1){
+        this.setState({
+          playerList: data.data,
+          firstName: data.data[0].first_name,
+          lastName: data.data[0].last_name,
+          position: data.data[0].position,
+          team: data.data[0].team.full_name,
+          conference: data.data[0].team.conference,
+          error: '',
+          showInfo: false,
+          showList: true
         })
       }
     })
@@ -82,7 +98,8 @@ class App extends React.Component{
                   conference={this.state.conference}
                   error={this.state.error}
                 />)}
-              </div>     
+              </div>  
+              {this.state.showList && (<List playerList={this.state.playerList}/>)}   
             </div>
           </div>
         </div>
