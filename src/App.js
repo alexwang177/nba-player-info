@@ -46,32 +46,35 @@ class App extends React.Component{
   getPlayer(e){
     e.preventDefault();
     const searchName = e.target.elements.playerName.value;
-    fetch(`https://free-nba.p.rapidapi.com/players?search=${searchName}&per_page=100`, 
-      {
-        method: 'GET', 
-        headers: {
-          'X-RapidAPI-Key' : API_KEY
+    if(searchName!='')
+    {
+      fetch(`https://free-nba.p.rapidapi.com/players?search=${searchName}&per_page=100`, 
+        {
+          method: 'GET', 
+          headers: {
+            'X-RapidAPI-Key' : API_KEY
+          }
         }
-      }
-    )
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-        this.setState({
-          playerList: data.data,
-          firstName: data.data[0].first_name,
-          lastName: data.data[0].last_name,
-          position: data.data[0].position,
-          team: data.data[0].team.full_name,
-          conference: data.data[0].team.conference,
-          error: '',
-          showInfo: false,
-          showList: true
-        })
-    })
-    .catch(err => {
-      console.log(err)
-    })
+      )
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+          this.setState({
+            playerList: data.data,
+            firstName: data.data[0].first_name,
+            lastName: data.data[0].last_name,
+            position: data.data[0].position,
+            team: data.data[0].team.full_name,
+            conference: data.data[0].team.conference,
+            error: '',
+            showInfo: false,
+            showList: true
+          })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    } 
   }
 
   // Change page
@@ -90,24 +93,24 @@ class App extends React.Component{
     return (
       <div className="App container">
         <div className="row">
-          <div className='col-4'><img src="https://66.media.tumblr.com/tumblr_mbfg0krUZq1qdxo4co1_500.jpg" className="rounded border border-dark m-3" id="jordan" alt="MJ"></img></div>        
-          <div className='col-8'>
+          <div className='col-xl-4'><img src="https://66.media.tumblr.com/tumblr_mbfg0krUZq1qdxo4co1_500.jpg" className="rounded border border-dark m-3" id="jordan" alt="MJ"></img></div>        
+          <div className='col-xl-8'>
             <Title />
             <Form getPlayer = {this.getPlayer}/>
             <hr/>
             {this.state.showList && (<List playerList={currentPosts} displayPlayer={this.displayPlayer}/>)} 
             <Pagination postsPerPage={this.state.postsPerPage} totalPosts={this.state.playerList.length} paginate={this.paginate}/>
             <div className="row">
-              <div className="col-6">       
-                {this.state.showInfo && (<Player 
+              <div className="col-md-6">       
+                {this.state.showInfo && (<Player id='playerCard'
                   firstName={this.state.firstName}
                   lastName={this.state.lastName}
                   position={this.state.position}
                   error={this.state.error}
                 />)}
               </div>   
-              <div className="col-6">          
-                {this.state.showInfo && (<Team 
+              <div className="col-md-6">          
+                {this.state.showInfo && (<Team id='teamCard'
                   team={this.state.team}
                   conference={this.state.conference}
                   error={this.state.error}

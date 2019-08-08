@@ -6,7 +6,7 @@ class Player extends React.Component{
     const cardStyle = {
       width:'22em',
       height: '15em',
-      marginTop: '22%'
+      margin: '1em auto'
     };
 
     const textStyle = {
