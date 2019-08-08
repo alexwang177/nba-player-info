@@ -68,7 +68,8 @@ class App extends React.Component{
             conference: data.data[0].team.conference,
             error: '',
             showInfo: false,
-            showList: true
+            showList: true,
+            currentPage: 1
           })
       })
       .catch(err => {
